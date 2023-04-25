@@ -1,0 +1,100 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+}
+$backgrd-color: #2b1132;
+$text-color: whitesmoke;
+$large-text: 5rem;
+$font: 'Oxygen', sans-serif;
+
+@mixin flexCenter($align) {
+    display: flex;
+    justify-content: center;
+    align-items: $align;    
+}
+
+@mixin gridCenter {
+    display: grid;
+    place-content: center;
+}
+
+body {
+    @include gridCenter();
+    height: 100vh;
+    background-color: $backgrd-color;
+    color: $text-color;
+    text-align: center;
+    padding: 2rem;
+    font-family: $font;
+}
+
+.App {
+    @include flexCenter(center);
+    flex-direction: column;
+}
+
+h1 {
+    font-size: calc($large-text - 1rem);
+}
+
+h2 {
+    font-size: calc($large-text/2 - 0.5rem);
+    margin-bottom: 0.5rem;
+}
+.length-controls {
+    @include flexCenter(center);
+    gap: 4rem;
+}
+
+.inline {
+    display: inline-block;
+}
+
+#break-length, #session-length {
+    margin: 0 1rem;
+}
+.timer {
+    border: 2px solid $text-color;
+    border-radius: 50%;
+    margin: 2rem;
+    padding: 1rem;
+    max-width: 300px;
+    height: 250px;
+    @include gridCenter();
+}
+
+#time-left {
+    font-size: $large-text;
+}
+
+a {
+    color: $text-color;
+    text-decoration: none;
+    &:hover {
+        border-bottom: 1px solid $text-color;
+        cursor: pointer;
+    }
+}
+
+button {
+    background-color: $backgrd-color;
+    border: transparent;
+    color: $text-color;
+    cursor: pointer;
+}
+
+.arrow-icon {
+    fill: $text-color;
+    height: 15px;
+    &:hover {
+        fill: rgb(206, 156, 156);
+    }
+}
+.arrow-icon-large{
+    @extend .arrow-icon;
+    height: 20px;
+    margin-left: 1rem;
+}
+    
