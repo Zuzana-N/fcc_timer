@@ -37,15 +37,36 @@ body {
 
 h1 {
     font-size: calc($large-text - 1rem);
+    margin-bottom: 1rem;
+    font-weight: 700;
+    @media (max-width: 440px) {
+        font-size: calc($large-text - 1.7rem);
+    }
 }
 
 h2 {
-    font-size: calc($large-text/2 - 0.5rem);
+    font-size: calc($large-text/2 - 0.7rem);
     margin-bottom: 0.5rem;
 }
 .length-controls {
     @include flexCenter(center);
+    // flex-wrap: wrap;
     gap: 4rem;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.length-controls > div {
+    background-color: $text-color;
+    color: $backgrd-color;
+    border-radius: 10px;
+    padding: 0.5rem;
+    box-shadow: 0 2px 10px $text-color;
+}
+
+.length-controls > button {
+    background-color: $text-color;
+
 }
 
 .inline {
@@ -60,7 +81,7 @@ h2 {
     border-radius: 50%;
     margin: 2rem;
     padding: 1rem;
-    max-width: 300px;
+    width: 250px;
     height: 250px;
     @include gridCenter();
 }
@@ -79,22 +100,31 @@ a {
 }
 
 button {
-    background-color: $backgrd-color;
     border: transparent;
     color: $text-color;
     cursor: pointer;
+    
 }
 
 .arrow-icon {
-    fill: $text-color;
+    fill: $backgrd-color;
     height: 15px;
-    &:hover {
-        fill: rgb(206, 156, 156);
-    }
+}
+
+.arrow-icon-large:hover,
+.arrow-icon:hover {
+    fill: rgb(206, 156, 156);
 }
 .arrow-icon-large{
-    @extend .arrow-icon;
-    height: 20px;
+    fill: $text-color;
+    height: 30px;
     margin-left: 1rem;
+    background-color: $backgrd-color;
+
+}
+
+button.controls {
+    background-color: $backgrd-color;
+
 }
     
