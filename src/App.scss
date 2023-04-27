@@ -8,6 +8,7 @@ $backgrd-color: #2b1132;
 $text-color: whitesmoke;
 $large-text: 5rem;
 $font: 'Oxygen', sans-serif;
+$hover-color: rgb(206, 156, 156);
 
 @mixin flexCenter($align) {
     display: flex;
@@ -20,6 +21,7 @@ $font: 'Oxygen', sans-serif;
     place-content: center;
 }
 
+// General
 body {
     @include gridCenter();
     height: 100vh;
@@ -35,6 +37,14 @@ body {
     flex-direction: column;
 }
 
+button {
+    border: transparent;
+    background-color: transparent;
+    color: $text-color;
+    cursor: pointer;
+}
+
+// Headings
 h1 {
     font-size: calc($large-text - 1rem);
     margin-bottom: 1rem;
@@ -45,13 +55,17 @@ h1 {
 }
 
 h2 {
-    font-size: calc($large-text/2 - 0.7rem);
-    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
 }
+
+#timer-label {
+    font-size: 2.5rem;
+}
+
+// Session and Break length section
 .length-controls {
     @include flexCenter(center);
-    // flex-wrap: wrap;
-    gap: 4rem;
+    gap: 2rem;
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
 }
@@ -62,11 +76,14 @@ h2 {
     border-radius: 10px;
     padding: 0.5rem;
     box-shadow: 0 2px 10px $text-color;
+    width: 180px;
+    @media (max-width: 420px) {
+        width: 150px;
+    }
 }
 
 .length-controls > button {
     background-color: $text-color;
-
 }
 
 .inline {
@@ -76,35 +93,6 @@ h2 {
 #break-length, #session-length {
     margin: 0 1rem;
 }
-.timer {
-    border: 2px solid $text-color;
-    border-radius: 50%;
-    margin: 2rem;
-    padding: 1rem;
-    width: 250px;
-    height: 250px;
-    @include gridCenter();
-}
-
-#time-left {
-    font-size: $large-text;
-}
-
-a {
-    color: $text-color;
-    text-decoration: none;
-    &:hover {
-        border-bottom: 1px solid $text-color;
-        cursor: pointer;
-    }
-}
-
-button {
-    border: transparent;
-    color: $text-color;
-    cursor: pointer;
-    
-}
 
 .arrow-icon {
     fill: $backgrd-color;
@@ -113,18 +101,44 @@ button {
 
 .arrow-icon-large:hover,
 .arrow-icon:hover {
-    fill: rgb(206, 156, 156);
+    fill: $hover-color;
 }
+
+// Controls section
 .arrow-icon-large{
     fill: $text-color;
     height: 30px;
     margin-left: 1rem;
     background-color: $backgrd-color;
-
 }
 
-button.controls {
-    background-color: $backgrd-color;
-
+// Timer section
+.timer {
+    border: 2px solid $text-color;
+    border-radius: 50%;
+    margin: 1.5rem;
+    padding: 1rem;
+    width: 250px;
+    height: 250px;
+    @include gridCenter();
 }
-    
+
+.timer-glow {
+    box-shadow: 0px 0px 10px white;
+}
+#time-left {
+    font-size: $large-text;
+    line-height: $large-text + 0.7rem;
+}
+
+// Footer
+a {
+    color: $text-color;
+    text-decoration: none;
+    border-bottom: 1px solid $text-color;
+    &:hover {
+        cursor: pointer;
+        color: $hover-color;
+        border-bottom: 1px solid $hover-color;
+    }
+}
